@@ -1,0 +1,34 @@
+plugins {
+    id "java"
+    id "application"
+    id "org.springframework.boot" version "2.1.0.RELEASE"
+}
+
+ext {
+    ver = [
+            springBoot: "2.1.0.RELEASE"
+    ]
+}
+
+apply plugin: "java"
+apply plugin: "io.spring.dependency-management"
+
+group = "com.example"
+mainClassName = "com.example.RedisCacheApplication"
+
+sourceCompatibility = JavaVersion.VERSION_1_10
+targetCompatibility = JavaVersion.VERSION_1_10
+
+repositories {
+    mavenLocal()
+    maven {
+        url "http://repo.spring.io/release"
+    }
+    mavenCentral()
+    jcenter()
+}
+
+dependencies {
+    compile group: "org.springframework.boot", name: "spring-boot-starter-web", version: "${ver.springBoot}"
+    compile group: "org.springframework.boot", name: "spring-boot-starter-data-redis", version: "${ver.springBoot}"
+}
